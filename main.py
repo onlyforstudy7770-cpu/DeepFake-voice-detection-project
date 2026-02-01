@@ -1,18 +1,18 @@
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
+import os
+import numpy as np
 
-y , src =  librosa.load("LA_D_1000265.flac" , sr = 16000)
 
-mfcc = librosa.feature.mfcc( y = y , sr = src , n_mfcc= 13)
+folder = "/home/adarsh/2025uee1036/images_ray/archive/LA/LA/ASVspoof2019_LA_train/flac"
+file = os.listdir(folder)
+i = 0
+for fil in file:
+    y , src = librosa.load("/home/adarsh/2025uee1036/images_ray/archive/LA/LA/ASVspoof2019_LA_train/flac/" + fil , sr = 22000)
+    mfcc = librosa.feature.mfcc( y = y , sr = src , n_mfcc= 13)
+    np.save("temp_data/" + fil , mfcc)
+    i += 1
 
-print(type(y))
-print(type(src))
-print(type(mfcc))
+print( i )
 
-plt.figure(figsize = (10 , 4))
-librosa.display.specshow( mfcc , x_axis= 'time')
-plt.colorbar()
-plt.title("mfsfhiuf")
-plt.tight_layout()
-plt.show()
