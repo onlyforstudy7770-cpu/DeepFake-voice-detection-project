@@ -1,1 +1,1 @@
-this is for a test file lol i think that 
+i did not have time to update the readme txt , sorry!
